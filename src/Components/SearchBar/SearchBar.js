@@ -7,6 +7,7 @@ const SearchBar = (props) => {
       <input
         placeholder="Enter A Song, Album, or Artist"
         onChange={props.onChange}
+        onKeyPress={props.onKeyPress}
       />
       <a onClick={props.onClick}>SEARCH</a>
     </div>

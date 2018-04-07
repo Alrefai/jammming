@@ -5,22 +5,33 @@ class SearchBarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { term: '' };
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleTermChange = this.handleTermChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleTermChange(e) {
     this.setState({ term: e.target.value });
   }
 
-  handleSearch() {
+  handleClick() {
     this.props.onSearch(this.state.term);
   }
 
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.props.onSearch(this.state.term);
+    }
+  }
+
   render() {
-    const onChange = this.handleTermChange;
-    const onClick = this.handleSearch;
-    return <SearchBar onChange={onChange} onClick={onClick} />;
+    return (
+      <SearchBar
+        onChange={this.handleTermChange}
+        onClick={this.handleClick}
+        onKeyPress={this.handleKeyPress}
+      />
+    );
   }
 }
 
