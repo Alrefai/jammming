@@ -20,6 +20,10 @@ class AppContainer extends Component {
     this.search = this.search.bind(this);
   }
 
+  componentDidMount() {
+    Spotify.getAccessToken();
+  }
+
   addTrack(track) {
     const newPlaylist = this.state.playlistTracks.slice();
     newPlaylist.push(track);
