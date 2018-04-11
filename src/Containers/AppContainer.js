@@ -25,6 +25,10 @@ class AppContainer extends Component {
   }
 
   addTrack(track) {
+    const isInPlaylist = this.state.playlistTracks.some(trackInList => {
+      return trackInList.id === track.id;
+    });
+    if (isInPlaylist) { return }
     const newPlaylist = this.state.playlistTracks.slice();
     newPlaylist.push(track);
     const updatedSearchResults = this.state.searchResults.filter(element => {
