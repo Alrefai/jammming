@@ -31,11 +31,11 @@ class AppContainer extends Component {
     if (isInPlaylist) { return }
     const newPlaylist = this.state.playlistTracks.slice();
     newPlaylist.push(track);
-    const updatedSearchResults = this.state.searchResults.filter(element => {
+    const searchResults = this.state.searchResults.filter(element => {
       return element.id !== track.id;
     });
     this.setState({
-      searchResults: updatedSearchResults,
+      searchResults: searchResults,
       playlistTracks: newPlaylist,
     });
   }
@@ -44,10 +44,15 @@ class AppContainer extends Component {
     const newPlaylist = this.state.playlistTracks.filter(trackInList => {
       return trackInList.id !== track.id;
     });
-    const updatedSearchResults = this.state.searchResults.slice();
-    updatedSearchResults.push(track);
+    const searchResults = this.state.searchResults.slice();
+    const isInSearchResults = searchResults.some(trackInList => {
+      return trackInList.id === track.id;
+    });
+    if (!isInSearchResults) {
+      searchResults.push(track);
+    }
     this.setState({
-      searchResults: updatedSearchResults,
+      searchResults: searchResults,
       playlistTracks: newPlaylist
     });
   }
