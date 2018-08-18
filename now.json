@@ -1,0 +1,20 @@
+{
+  "type": "static",
+  "build": {
+    "env": {
+      "CI": "true",
+      "NODE_ENV": "production",
+      "REACT_APP_SPOTIFY_CLIENT_ID": "@spotify-client-id",
+      "REACT_APP_DOMAIN": "@jammming-alias"
+    }
+  },
+  "static": {
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "alias": "refamio"
+}
