@@ -11,13 +11,13 @@ cache:
 before_deploy: npm install now --no-save # Install Now CLI on Travis
 deploy:
   - provider: script # Run a custom deployment script which we will define below
-    script: now --public --token $NOW_TOKEN
+    script: now --build-env REACT_APP_DOMAIN=$NOW_URL --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
       master: false
   - provider: script
-    script: now --public --token $NOW_TOKEN && now alias jam-ci --token $NOW_TOKEN
+    script: now --build-env REACT_APP_DOMAIN=$REACT_APP_DOMAIN --token $NOW_TOKEN && now alias jam-ci --token $NOW_TOKEN
     skip_cleanup: true
     on:
       master: true
