@@ -1,5 +1,7 @@
 {
+  "name": "jammming",
   "type": "static",
+  "public": true,
   "build": {
     "env": {
       "CI": "true",
